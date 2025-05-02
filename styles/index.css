@@ -1,10 +1,10 @@
 @import url('https://fonts.cdnfonts.com/css/lt-binary-neue');
 @import url('https://fonts.cdnfonts.com/css/procyon');
-@import "./deck.css";
-@import "./card.css";
-@import "./cardActions.css";
-@import "./token.css";
-@import "./svg.css";
+@import "deck.css";
+@import "card.css";
+@import "cardActions.css";
+@import "token.css";
+@import "svg.css";
 
 html, body {
     font-family: 'LT Binary Neue', sans-serif !important;
