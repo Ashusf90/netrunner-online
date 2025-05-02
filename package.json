@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "name": "netrunner-online",
+  "version": "0.0.0",
+  "scripts": {
+    "serve": "vite serve ./src/",
+    "build": "vite build ./src/ --outDir ../dist/"
+  },
+  "dependencies": {
+    "stageplay": "file:../stageplay"
+  },
+  "devDependencies": {
+    "vite": "^6.3.4"
+  }
+}
