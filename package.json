@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "serve": "vite serve ./src/",
-    "build": "vite build ./src/ --outDir ../dist/"
+    "build": "vite build ./src/ --outDir ../dist/ --base \"/netrunner-online/\""
   },
   "dependencies": {
     "stageplay": "file:../stageplay"
