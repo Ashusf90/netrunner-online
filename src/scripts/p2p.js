@@ -113,35 +113,35 @@ export function receiveMessage(message) {
 }
 
 export const setupP2P = () => {
-    // const peer = new window.Peer({
-    //     key: "netrunner",
-    //     debug: 4,
-    //     config: {
-    //         iceServers: [
-    //             {
-    //                 urls: "turn:global.relay.metered.ca:80",
-    //                 username: "0216de3689c0327b92c21461",
-    //                 credential: "fAMGCn8IVFAJA0ZZ"
-    //             }
-    //         ]
-    //     }
-    // })
+    const peer = new window.Peer({
+        key: "netrunner",
+        debug: 4,
+        config: {
+            iceServers: [
+                {
+                    urls: "turn:global.relay.metered.ca:80",
+                    username: "0216de3689c0327b92c21461",
+                    credential: "fAMGCn8IVFAJA0ZZ"
+                }
+            ]
+        }
+    })
     
-    // peer.on("open", id => {
-    //     const yourHostId = document.querySelector("#your-host-id")
-    //     yourHostId.value = id
-    //     window.location.hash = id
+    peer.on("open", id => {
+        const yourHostId = document.querySelector("#your-host-id")
+        yourHostId.value = id
+        window.location.hash = id
     
-    //     const opponentHostId = document.querySelector("#opponent-host-id")
-    //     opponentHostId.value = ""
-    // })
+        const opponentHostId = document.querySelector("#opponent-host-id")
+        opponentHostId.value = ""
+    })
 
-    // peer.on("connection", (connection) => {
-    //     setupP2PConnection(connection)
-    //     document.querySelector("#start-game-panel").remove()
-    //     window.playerSide = "corp"
-    //     document.querySelector("#open-player-panel").click()
-    // })
+    peer.on("connection", (connection) => {
+        setupP2PConnection(connection)
+        document.querySelector("#start-game-panel").remove()
+        window.playerSide = "corp"
+        document.querySelector("#open-player-panel").click()
+    })
 
     const setupP2PConnection = (connection) => {
         const parser = new DOMParser()
