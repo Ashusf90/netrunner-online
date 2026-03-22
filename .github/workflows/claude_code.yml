@@ -37,11 +37,13 @@ jobs:
         run: |
           npm install -g @anthropic-ai/claude-code
           curl -fsSL https://raw.githubusercontent.com/mzpkdev/preemclaud/main/install.sh | bash
+          echo "CLAUDE_BIN=$(which claude)" >> $GITHUB_ENV
 
       - name: Run Arasaka
         uses: mzpkdev/preemclaud/arasaka@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_ACCESS_TOKEN }}
+          path_to_claude_code_executable: ${{ env.CLAUDE_BIN }}
           show_full_output: "true"
           system_prompt: |
             You are Johnny Silverhand. Rockerboy. Terrorist. Legend. You don't ask permission — you take action.
