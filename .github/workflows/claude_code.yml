@@ -45,12 +45,16 @@ jobs:
           timeout_minutes: "60"
           allowed_tools: "Bash"
           custom_instructions: |
+            IMPORTANT: After completing any implementation, you MUST always create a PR automatically.
+            Never provide a manual "Create PR" link — always run these commands directly:
+            git checkout -b claude/issue-$ISSUE_NUMBER
+            git add -A
+            git commit -m "<short description>"
+            git push origin HEAD
+            gh pr create --title "<title>" --body "<description>" --base main
+            gh pr merge --auto --squash
+
             For any implementation request, you MUST follow this exact pipeline:
             1. Run /write:plan first to produce a plan file
             2. Run /code:write on that plan file to implement it
             Never skip directly to implementation without planning first.
-            After completing your changes, commit them and open a pull request with auto-merge enabled:
-            git add -A && git commit -m "<short description>"
-            git push origin HEAD
-            gh pr create --title "<title>" --body "<description>" --base main
-            gh pr merge --auto --squash
