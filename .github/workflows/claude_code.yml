@@ -33,8 +33,10 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Install preemclaud
-        run: curl -fsSL https://raw.githubusercontent.com/mzpkdev/preemclaud/main/install.sh | bash
+      - name: Install Claude Code and preemclaud
+        run: |
+          npm install -g @anthropic-ai/claude-code
+          curl -fsSL https://raw.githubusercontent.com/mzpkdev/preemclaud/main/install.sh | bash
 
       - name: Run Claude PR Action
         uses: anthropics/claude-code-action@v1
