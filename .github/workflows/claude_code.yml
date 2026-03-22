@@ -33,6 +33,9 @@ jobs:
         with:
           fetch-depth: 1
 
+      - name: Install preemclaud
+        run: curl -fsSL https://raw.githubusercontent.com/mzpkdev/preemclaud/main/install.sh | bash
+
       - name: Run Claude PR Action
         uses: anthropics/claude-code-action@v1
         with:
@@ -40,3 +43,8 @@ jobs:
           timeout_minutes: "60"
           create_pull_request: "true"
           allowed_tools: "Bash"
+          custom_instructions: |
+            For any implementation request, you MUST follow this exact pipeline:
+            1. Run /write:plan first to produce a plan file
+            2. Run /code:write on that plan file to implement it
+            Never skip directly to implementation without planning first.
