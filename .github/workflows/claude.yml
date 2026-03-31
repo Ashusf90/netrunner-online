@@ -32,8 +32,9 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Install preemclaud
+      - name: Install Claude Code and preemclaud
         run: |
+          npm install -g @anthropic-ai/claude-code
           curl -fsSL https://raw.githubusercontent.com/mzpkdev/preemclaud/main/install.sh | bash
           echo "CLAUDE_BIN=$(which claude)" >> $GITHUB_ENV
 
