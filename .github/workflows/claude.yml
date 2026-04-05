@@ -3,7 +3,7 @@ name: Claude Code
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 3 * * *"
+    - cron: "30 15 * * *"
   issue_comment:
     types: [created]
   pull_request_review_comment:
