@@ -6,33 +6,31 @@ on:
   pull_request_review_comment:
     types: [created]
   issues:
-    types: [opened, assigned]
+    types: [opened, assigned, labeled]
   pull_request_review:
     types: [submitted]
+  pull_request:
+    types: [opened, synchronize, ready_for_review, reopened]
 
 jobs:
-  claude:
+  arasaka:
     if: |
       (
         (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@arasaka')) ||
         (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '@arasaka')) ||
         (github.event_name == 'pull_request_review' && contains(github.event.review.body, '@arasaka')) ||
-        (github.event_name == 'issues' && (contains(github.event.issue.body, '@arasaka') || contains(github.event.issue.title, '@arasaka')))
+        (github.event_name == 'issues' && github.event.action != 'labeled' && (contains(github.event.issue.body, '@arasaka') || contains(github.event.issue.title, '@arasaka'))) ||
+        (github.event_name == 'issues' && github.event.action == 'labeled' && github.event.label.name == 'arasaka:ready') ||
+        github.event_name == 'pull_request'
       ) && github.actor == 'mzpkdev'
-    runs-on: ubuntu-latest
+    uses: mzpkdev/preemclaud/.github/workflows/arasaka.yml@v1
     permissions:
       contents: write
       pull-requests: write
       issues: write
       id-token: write
       actions: write
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
-
-      - name: Run Arasaka
-        uses: mzpkdev/preemclaud/arasaka@v1
-        with:
-          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+    with:
+      trigger_phrase: "@arasaka"
+      ready_label: "arasaka:ready"
+    secrets: inherit
