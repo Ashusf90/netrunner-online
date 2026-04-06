@@ -38,6 +38,6 @@ jobs:
     with:
       trigger_phrase: "@arasaka"
       ready_label: "arasaka:ready"
-      queue_max_issues: "3"
+      queue_max_issues: "1"
       auto_start_from_queue: true
     secrets: inherit
