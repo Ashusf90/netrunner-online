@@ -1,0 +1,28 @@
+name: Arasaka Develop
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 */4 * * *"
+  issue_comment:
+    types: [created]
+
+jobs:
+  develop:
+    if: |
+      (
+        github.event_name == 'workflow_dispatch' ||
+        github.event_name == 'schedule' ||
+        (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@arasaka'))
+      )
+    uses: mzpkdev/preemclaud/.github/workflows/develop.yml@v1
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+      id-token: write
+      actions: write
+    with:
+      trigger_phrase: "@arasaka"
+      ready_label: "arasaka:ready"
+    secrets: inherit

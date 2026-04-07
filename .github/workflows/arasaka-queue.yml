@@ -1,0 +1,19 @@
+name: Arasaka Queue
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 */8 * * *"
+
+jobs:
+  queue:
+    uses: mzpkdev/preemclaud/.github/workflows/queue.yml@v1
+    permissions:
+      contents: read
+      pull-requests: read
+      issues: write
+      id-token: write
+    with:
+      ready_label: "arasaka:ready"
+      queue_max_issues: "3"
+    secrets: inherit

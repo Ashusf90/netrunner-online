@@ -1,0 +1,16 @@
+name: Arasaka Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, ready_for_review, reopened]
+
+jobs:
+  review:
+    uses: mzpkdev/preemclaud/.github/workflows/review.yml@v1
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+      checks: write
+      id-token: write
+    secrets: inherit
