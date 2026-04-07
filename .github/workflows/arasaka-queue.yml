@@ -14,6 +14,5 @@ jobs:
       issues: write
       id-token: write
     with:
-      ready_label: "arasaka:ready"
       queue_max_issues: "3"
     secrets: inherit

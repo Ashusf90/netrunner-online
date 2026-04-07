@@ -6,6 +6,8 @@ on:
     - cron: "0 */4 * * *"
   issue_comment:
     types: [created]
+  repository_dispatch:
+    types: [arasaka-revise]
 
 jobs:
   develop:
@@ -13,6 +15,7 @@ jobs:
       (
         github.event_name == 'workflow_dispatch' ||
         github.event_name == 'schedule' ||
+        github.event_name == 'repository_dispatch' ||
         (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@arasaka'))
       )
     uses: mzpkdev/preemclaud/.github/workflows/develop.yml@v1
@@ -24,5 +27,4 @@ jobs:
       actions: write
     with:
       trigger_phrase: "@arasaka"
-      ready_label: "arasaka:ready"
     secrets: inherit
