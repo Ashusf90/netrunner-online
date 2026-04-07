@@ -14,6 +14,7 @@ jobs:
       issues: write
       id-token: write
     with:
+      model: "claude-haiku-4-5"
       stale_days: "30"
       stale_label: "stale"
       max_actions: "10"

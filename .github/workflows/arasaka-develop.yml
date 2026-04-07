@@ -26,5 +26,6 @@ jobs:
       id-token: write
       actions: write
     with:
+      model: "claude-sonnet-4-6"
       trigger_phrase: "@arasaka"
     secrets: inherit
