@@ -1,0 +1,20 @@
+name: Arasaka Maintain
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * 1"
+
+jobs:
+  maintain:
+    uses: mzpkdev/preemclaud/.github/workflows/maintain.yml@v1
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+      id-token: write
+    with:
+      stale_days: "30"
+      stale_label: "stale"
+      max_actions: "10"
+    secrets: inherit
