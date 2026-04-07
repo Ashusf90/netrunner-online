@@ -14,3 +14,19 @@ https://raw.githubusercontent.com/html-first-labs/static-tailwind/main/src/class
 
 Cards use a cursor-reactive holographic sheen inspired by https://poke-holo.simey.me/. Reimplement the effect in plain
 CSS (custom properties + gradients + mix-blend-mode) with minimal JS for tracking cursor position. No dependencies.
+
+## Tooling Commands
+
+| Command             | What it does                                       |
+| ------------------- | -------------------------------------------------- |
+| `npm run serve`     | Start Vite dev server from `src/`                  |
+| `npm run build`     | Production build to `dist/`                        |
+| `npm test`          | Run all Vitest tests once                          |
+| `npm run lint`      | Lint with Biome (no auto-fix)                      |
+| `npm run format`    | Format all files with Biome (writes changes)       |
+| `npm run check`     | Biome lint + format with auto-fix (writes changes) |
+| `npm run typecheck` | Type-check with `tsc --noEmit`                     |
+| `npm run e2e`       | Run Playwright E2E tests (headless)                |
+
+Config files live at the repo root: `tsconfig.json`, `biome.json`, `vitest.config.js`, `playwright.config.js`. All start
+permissive and tighten over time per `spec/TECHNICAL_VISION.md`. E2E tests live in `e2e/`.
